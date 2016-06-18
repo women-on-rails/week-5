@@ -110,10 +110,3 @@ git push
 Allez voir sur github, vos modifications apparaitront :)
 
 # Pour aller plus loin :
-- En savoir plus sur les controleurs : http://guides.rubyonrails.org/action_controller_overview.html ou
-- Les conditions : https://www.grafikart.fr/formations/apprendre-ruby/conditions
-- Les boucles : https://www.grafikart.fr/formations/apprendre-ruby/loops
-- Les méthodes : https://www.grafikart.fr/formations/apprendre-ruby/method
-- Les classes et instances : https://www.grafikart.fr/formations/apprendre-ruby/poo-objet
-- Tableaux, hashes et symboles : https://www.grafikart.fr/formations/apprendre-ruby/array-hash ou https://zestedesavoir.com/tutoriels/634/une-introduction-a-ruby/497_les-bases/2490_les-tableaux/
-- Les booléens : http://www.tonyryudev.com/joomla3/index.php/menu-mes-developpements/menu-cours-ruby-rgss/4-ruby-cours-n-3-les-booleens-et-les-calculs-logiques
