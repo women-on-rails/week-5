@@ -1,35 +1,35 @@
-# Étape 1 : Récuperer le projet week-4
+# Étape 1 : Récuperer le projet week-5
 
 Ouvrez une console et entrez dans votre répertoire de travail (aidez vous des commandes ````cd```` (Changement de Dossier) et ````ls```` (LiSte des fichiers)).
 Créez un nouveau dossier de travail (````mkdir```` : MaKe DIRectory):
 ``` Console
-mkdir week-4
+mkdir week-5
 ````
 
 Entrez dans ce dossier:
 ``` Console
-cd week-4
+cd week-5
 ````
 
 Initialisez GIT pour votre projet:
 ``` Console
 git init
 ````
-Vous allez maintenant lier votre répertoire ````week-4```` situé sur votre ordinateur avec un répertoire distant week-4 situé sur votre compte github. Le lien sera appelé ````origin````.
-Pour cela, créez un nouveau répertoire appelé ````week-4```` sur Github et copiez l'url de ce répertoire.
+Vous allez maintenant lier votre répertoire ````week-5```` situé sur votre ordinateur avec un répertoire distant week-5 situé sur votre compte github. Le lien sera appelé ````origin````.
+Pour cela, créez un nouveau répertoire appelé ````week-5```` sur Github et copiez l'url de ce répertoire.
 Puis, faites la commande suivante, en remplaçant (votre compte) dans cette adresse par votre compte :
 ``` Console
-git remote add origin git@github.com:(votre compte)/week-4.git
+git remote add origin git@github.com:(votre compte)/week-5.git
 ````
-Cela vous permet de synchroniser votre compte github avec les modifications que vous ferez sur le projet week-4 sur votre ordinateur.
+Cela vous permet de synchroniser votre compte github avec les modifications que vous ferez sur le projet week-5 sur votre ordinateur.
 
-À cette étape, si vous faites ````ls```` dans votre console, le dossier ````week-4```` doit être vide.
-Et si vous faites ````ls -a```` le dossier ````week-4```` ne contient que les fichiers de configuration de git, dans le dossier caché ````.git````.
+À cette étape, si vous faites ````ls```` dans votre console, le dossier ````week-5```` doit être vide.
+Et si vous faites ````ls -a```` le dossier ````week-5```` ne contient que les fichiers de configuration de git, dans le dossier caché ````.git````.
 
-Maintenant, vous allez lier votre répertoire ````week-4```` situé sur votre ordinateur avec le répertoire distant ````week-4```` situé sur le compte des Women On Rails. Le lien sera appelé ````upstream````. 
+Maintenant, vous allez lier votre répertoire ````week-5```` situé sur votre ordinateur avec le répertoire distant ````week-5```` situé sur le compte des Women On Rails. Le lien sera appelé ````upstream````.
 Pour cela, faites la commande suivante :
 ``` Console
-git remote add upstream git@github.com:women-on-rails/week-4.git
+git remote add upstream git@github.com:women-on-rails/week-5.git
 ````
 Cela va vous permettre de récupérer facilement le code existant nécessaire pour la suite de l'exercice. 
 
@@ -38,78 +38,17 @@ Pour récupérer ce code, faites la commande suivante :
 git pull upstream master
 ````
 
-Cela remplit le dossier ````week-4```` sur votre ordinateur avec tout ce que contient le projet ````week-4```` sur le compte Github des Women On Rails. 
+Cela remplit le dossier ````week-5```` sur votre ordinateur avec tout ce que contient le projet ````week-5```` sur le compte Github des Women On Rails.
 En faisant un ````ls````, vous pourrez voir la liste des fichiers copiés. 
 
 Vous voila prête pour l'exercice !
 
 # Étape 2 : Lire l'exercice et se lancer
 
-### S'essayer à la console
-
-
-### Application au projet Curiosités
-
-Ouvrez votre projet week-4 avec l'éditeur que vous utilisez.
-Si vous utilisez SublimeText, vous pouvez faire ````subl .```` dans la console pour ouvrir directement votre projet. 
-(````subl```` c'est SublimeText, l'espace c'est parce que la commande est finie, et le point c'est pour dire "ouvre dans Sublime Text tout le dossier dans lequel je suis, en un coup").
-
-Ouvrez le controleur ````curiosities_controller````. Il y a la méthode ````index```` qui correspond à vue ````index.html.erb```` affichant la liste des curiosités.
-
-Dans cette méthode, vous allez récupérer toutes les curiosités stockées en base de donnée avec le modèle ````Curiosity````:
-
-```Ruby
-@curiosities = Curiosity.all
-````
-
-Cela définie la variable ````curiosities```` contenant le tableau des objets ````Curiosity```` contenus en base de donnée.
-
-> Important :
-> Un objet ````Curiosity```` est composé d'un identifiant (````id````), d'un nom (````name````), d'une description (````description````), d'une url pour une image (````image_url````) et d'un texte relatif à l'image (````image_text````).
-
-Afficher une curiosité dans la console (````rails c````) donnera ceci :
-``` Ruby
-> curiosities = Curiosity.all
-> curiosities[0]
-=> #<Curiosity:0x007fd37090f920
- id: 1,
- name: "Joli mug",
- description: "Reçu au Japon, lors d'un congrès interlitières",
- image_url:
-  "https://s-media-cache-ak0.pinimg.com/236x/4a/86/bf/4a86bfbf02b472e5b385762b8f267a91.jpg",
- image_text: "Un grand mug de lait pour bien commencer la journée",
- created_at: Sat, 18 Jun 2016 17:54:37 UTC +00:00,
- updated_at: Sat, 18 Jun 2016 17:54:37 UTC +00:00>
-````
-
-Cette variable est passée du controleur à la vue et peut donc etre utilisée dans ````index.html.erb````.
-
-Ouvrez la vue ````index.html.erb```` et modifiez la pour remplacer le texte de vos curiosités par les données contenues dans chaque objet ````Curiosity````.
-
-Pour injecter et interpréter du code Ruby dans une page HTML, il faut l'entourer de ````<%```` et ````%>````.
-Si vous souhaitez afficher une valeur, il faut l'entourer de ````<%=```` et ````%>````.
-
-Voici des exemples :
-
-``` Ruby
- <% @cusiosities = Curiosity.all %> # Définie une variable 
- <%= @curiosities[0].name %> # Affiche le nom de la curiosité 0 dans la vue
-````
-
-Et enfin, pour parcourir le tableau des curiosités, vous pouvez utiliser une boucle ````each```` : 
-``` Ruby
-<% @curiosities.each do |curiosity| %> # Définie le début de la boucle => affiche le nom pour chaque élément du tableau
- <div> 
-   <%= @curiosity.name
- </div>
-<%= end %> # Détermine la fin de la boucle
-````
-
-À vous de jouer !
 
 ### Lancer le serveur sur lequel va tourner l'application
 
-En premier lieu, vérifiez que votre application a tous les plug-ins qu'elle utilise à disposition : vous pouvez les installer automatiquement en faisant la commande ````bundle install```` dans votre console, à l'intérieur du dossier de votre projet ````week-4````. 
+En premier lieu, vérifiez que votre application a tous les plug-ins qu'elle utilise à disposition : vous pouvez les installer automatiquement en faisant la commande ````bundle install```` dans votre console, à l'intérieur du dossier de votre projet ````week-5````.
 
 Si un problème survient au niveau de la version de ruby, vous devriez avoir besoin d'effectuer la commande ````rbenv install 2.3.1```` dans la console pour installer la version de ruby dont l'application a besoin. 
 (Si rbenv ne connait pas cette version, utilisez la commande ````brew update && brew upgrade ruby-build```` avant)
@@ -126,7 +65,7 @@ Apres avoir fait des modifications sur cette vue, vous n'aurez qu'à recharger l
 
 # Étape 3 : Enregistrer les modifications sur le répertoire distant
 
-Lorsque vous avez fait des modifications dans votre projet ````week-4````, vous pouvez avoir besoin de les enregistrer pour ne pas les effacer malencontreusement. Pour cela, vous allez les ````commit```` (par abus de langage en français "commiter") : sauvegarder l'ensemble des modifications, pas pour votre éditeur de texte, mais pour git. 
+Lorsque vous avez fait des modifications dans votre projet ````week-5````, vous pouvez avoir besoin de les enregistrer pour ne pas les effacer malencontreusement. Pour cela, vous allez les ````commit```` (par abus de langage en français "commiter") : sauvegarder l'ensemble des modifications, pas pour votre éditeur de texte, mais pour git.
 
 Pour voir les différences entre ce que vous avez en ce moment dans les fichiers et ce que git a compris "depuis la dernière sauvegarde", vous pouvez lancer la commande suivante :
 ``` Console
