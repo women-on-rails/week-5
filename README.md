@@ -55,7 +55,8 @@ Si un problème survient au niveau de la version de ruby, vous devriez avoir bes
 Puis, installez bundler pour cette version avec la commande ````gem install bundle````. Et enfin, faites un ````bundle update````pour mettre a jour vos plug-ins. 
 
 Pour lancer un serveur Ruby On Rails, vous devez faire la commande ````rails server```` (ou ````rails s````) toujours dans votre console. 
-Et voila, votre serveur est lancé !
+Et voila, votre serveur est lancé ! 
+(Rappel : pour quitter le serveur Rails, il vous suffit de taper ctrl + C dans votre terminal)
 
 ### Visualiser l'application sur le navigateur
 
@@ -102,6 +103,7 @@ Cette table ````curiosities```` a plusieurs colonnes (block ````do````):
 
 Les deux dernières colonnes (created_at et updated_at) sont créées grace à la ligne ````t.timestamps null: false````, ajoutée automatiquement par Ruby On Rails. 
 
+Pour vous aider un peu, nous avons déjà lancé cette première migration "CreateCuriosities".
 Lorsque des migrations ont été effectuées sur la base de données de votre application, il est possible de retrouver sa structure complète dans le fichier /db/schema.rb
 
 Ouvrez ce fichier. Vous pouvez constater que vous retrouvez la méthode de créationd e la table ````Curiosities````, avec tout ce qui la compose. 
@@ -145,9 +147,11 @@ A la suite de cette ligne, vous pouvez voir l'objet qui représente la curiosit�
 
 La ligne avec l'identifiant 1 de la table ````Curiosity```` de la base de données a été abstraite dans le modèle (ou classe) ````Curiosity```` de l'application, ce qui donne une instance de ce modèle. 
 
+Nous allons maintenant quitter la console Rails : pour cela, tapez "exit" dans la console à partir du terminal. 
+
 #### Ajouter de nouveaux attributs
 
-Nous aimerions que chaque curiosité ait une catégorie spécifique. Par exemple:
+Nous aimerions que chaque curiosité aie une catégorie spécifique. Par exemple:
 - le joli mug sera de catégorie ````Vaisselle```` 
 - la bobine de fil sera de catégorie ````Coffre à jouet````
 - le super t-shirt sera de catégorie ````Penderie````
