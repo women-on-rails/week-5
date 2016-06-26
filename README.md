@@ -110,3 +110,9 @@ git push
 Allez voir sur github, vos modifications apparaitront :)
 
 # Pour aller plus loin :
+- La documentation de Ruby : http://ruby-doc.org/core-2.3.1/
+- La documentation de Ruby On Rails : http://api.rubyonrails.org/
+- Active Record : https://fr.wikipedia.org/wiki/Active_record (FR) ou http://guides.rubyonrails.org/active_record_basics.html (EN)
+- Comparaison entre Sqlite, MySql et Postgres (EN) : https://www.digitalocean.com/community/tutorials/sqlite-vs-mysql-vs-postgresql-a-comparison-of-relational-database-management-systems
+- Les migrations (EN) : http://guides.rubyonrails.org/active_record_migrations.html
+- Les validations (EN) : http://guides.rubyonrails.org/active_record_validations.html
