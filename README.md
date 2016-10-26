@@ -37,19 +37,19 @@ Si vous utilisez SublimeText, vous pouvez faire subl . dans la console pour ouvr
 Pour commencer, créez le fichier ``` app/controllers/curiosities_controller.rb ```.
 Ce fichier est pour le moment vide.
 
-! IMAGE !
+![Controleur vide](/images/readme/empty_controller.png)
 
 Nous allons définir à l'intérieur de ce fichier la classe ``` CuriositiesController ``` qui va nous permettre d'orchestrer les accès aux vues des curiosités.
 
 Pour cela, ajoutez le code suivant dans le fichier ``` app/controllers/curiosities_controller.rb ```:
 
-! IMAGE !
+![Controleur défini](/images/readme/defined_class.png)
 
 Dans votre classe ``` CuriositiesController ```, vous allez ajouter les méthodes qui vont définir les actions possibles à faire sur des curiosités, dans l'application.
 
 Ici, nous commençons donc par travailler sur l'action d'affichage d'une curiosité.
 
-! IMAGE !
+![Définition de la méthode ``` show ```](/images/readme/description_show.png)
 
 Nous avons besoin de définir ce qu'il se passe quand un utilisateur demande à voir les détails d'une curiosité.
 
@@ -57,7 +57,7 @@ Dans la méthode ``` show ```, nous allons récupérer les données d'une curios
 
 Rajoutez la méthode ``` show ``` et ce qu'elle fait dans le controleur ``` Curiosities ``` qui se trouve dans ``` app/controllers/curiosities_controller.rb ``` :
 
-! IMAGE !
+![Description action](/images/readme/instance.png)
 
 > Astuce : Les valeurs contenues dans la variable ``` params ``` viennent du navigateur de l'utilisateur. Il les envoie au serveur lorsqu'une requete est effectuée. Par exemple, si un utilisateur demande:
 > http://localhost:3000/curiosities?toto=poulpe
@@ -66,7 +66,7 @@ Rajoutez la méthode ``` show ``` et ce qu'elle fait dans le controleur ``` Curi
 
 Si à cette étape vous lancez un serveur Rails et que vous essayez d'aller sur ``` http://localhost:3000/curiosities/1 ```, voici le résultat que vous obtiendrez :
 
-! IMAGE !
+![Erreur route manquante](/images/readme/error_view_missing_route.png)
 
 Nous n'avons pas encore défini de route relative à la méthode ``` show ``` que nous venons de créer. Du coup, l'application ne sait pas comment réagir avec cette URL. Voyons maintenant comment définir cette nouvelle route !
 
@@ -78,11 +78,15 @@ Ce travail permet d'associer une URL (sur laquelle veut se rendre un utilisateur
 
 Rajoutez la ligne suivante dans le fichier ``` config/routes.rb ``` :
 
-! IMAGE !
+![Définition route](/images/readme/routes.png)
 
-Si vous lancez un serveur Rails et que vous essayez d'aller sur ``` http://localhost:3000/curiosities/1 ```, voici le résultat que vous obtiendrez :
+Si vous lancez un serveur Rails et que vous essayez d'aller sur ``` http://localhost:3000/curiosities/1 ```, voici les résultats que vous pourriez obtenir :
 
-! IMAGE !
+![Erreur curiosité inconnue](/images/readme/error_view_record_not_found.png)
+
+Ici, l'application n'arrive pas à trouver la curiosité demandée. La curiosité dont l'identifiant est passé en paramètre n'existe pas en base de données.
+
+![Erreur vue manquante](/images/readme/error_view_missing_template.png)
 
 Cette fois l'application sait comment réagir avec cette URL. Le souci maintenant, c'est que la vue associée n'existe pas encore.
 
@@ -97,6 +101,34 @@ Il faut maintenant afficher à l'utilisateur qu'il peut afficher une curiosité 
 Il faut trouver le chemin (``` path ```) qui indiquera la route dans le fichier ``` config/routes.rb ``` vers la méthode du controleur. Pour trouver ce chemin, vous pouvez entrer ``` rake routes ``` dans votre terminal.
 
 Ce qui vous donne :
+
+![Rake routes](/images/readme/rake_routes.png)
+
+La ligne qui nous interesse est la suivante : ```  GET  /curiosities/:id(.:format) curiosities#show ```
+
+Vous retrouvez bien le verbe HTTP ``` GET ``` (cf Verb), l'url ``` /curiosities/:id ```  (cf URI Pattern), la méthode du Controleur ``` curiosities#show ``` (cf Controller#Action). Et tout devant, un prefix ``` curiosities ``` qui vous donne en fait le chemin à rajouter dans votre vue : ``` curiosities_path ```.
+
+Attention, ici, le controleur a besoin de l'identifiant (ID) de la curiosité à afficher. Il faut donc la passer dans les paramètres. Nous l'indiquons comme ceci : ``` curiosities_path(curiosity) ```.
+
+> Important : ``` curiosities_path(curiosity) est une méthode générée par Ruby On Rails directement, en fonction de ce que vous avez défini dans le fichier ``` route.rb ``` . Elle accepte en parametre un objet ``` curiosity ``` ou son identifiant ``` curiosity.id ```.
+
+Rajoutez le lien dans votre vue ``` app/views/home/index.html ``` :
+
+![Lien vers la curiosité](/images/readme/view_index_code.png)
+
+Testez maintenant votre nouveau lien en lançant un serveur Rails. Il s'affiche bien dans votre vue :
+
+![Liste des curiosités](/images/readme/view_display_link.png)
+
+Par contre, si vous cliquez dessus, vous obtenez toujours l'erreur sur la vue manquante.
+
+![Erreur vue manquante](/images/readme/error_view_missing_template.png)
+
+C'est normal, la vue liée à l'action ``` show ``` n'existe pas encore. L'application sait où aller, quoi passer à une vue mais ne connait pas encore cette vue. Construisons la !
+
+### Créer la vue
+
+
 
 # Étape 3 : Pour aller plus loin
 
