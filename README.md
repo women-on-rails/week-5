@@ -2,9 +2,7 @@
 
 Slides du cours disponibles [ici](http://slides.com/women_on_rails/week-5)
 
-! EN CONSTRUCTION !
-
-Ce tutoriel a pour objectif de comprendre , dans le cadre du cycle 1 des ateliers Women On Rails.
+Ce tutoriel a pour objectif de comprendre comment manipuler des objets dans le controleur et passer les données de ces objets à des vues, dans le cadre du cycle 1 des ateliers Women On Rails.
 
 # Étape 1 : Rappels
 
@@ -47,8 +45,6 @@ Si vous utilisez SublimeText, vous pouvez faire subl . dans la console pour ouvr
 
 ### Créer le controleur
 
-( ! EN CONSTRUCTION ! deux manieres : scaffold / a la main)
-
 Pour commencer, créez le fichier ``` app/controllers/curiosities_controller.rb ```.
 Ce fichier est pour le moment vide.
 
@@ -79,7 +75,7 @@ Rajoutez la méthode ``` show ``` et ce qu'elle fait dans le controleur ``` Curi
 > Alors ``` params[:toto] ``` sera égal à poulpe.
 > La variable ``` params ``` est simplement un tableau de valeurs accessibles grace à des clés. Ici la valeur à laquelle accéder est poulpe et la clé d'accès est ``` :toto ```.
 
-Si à cette étape vous lancez un serveur Rails et que vous essayez d'aller sur ``` http://localhost:3000/curiosities/1 ```, voici le résultat que vous obtiendrez :
+Si à cette étape vous lancez un serveur Rails et que vous essayez d'aller sur ``` https://curiosites-[votrenom].c9users.io/curiosities/1 ``` (remplacez [votrenom] par le nom de votre compte), voici le résultat que vous obtiendrez :
 
 ![Erreur route manquante](/images/readme/error_view_missing_route.png)
 
@@ -95,7 +91,7 @@ Rajoutez la ligne suivante dans le fichier ``` config/routes.rb ``` :
 
 ![Définition route](/images/readme/routes.png)
 
-Si vous lancez un serveur Rails et que vous essayez d'aller sur ``` http://localhost:3000/curiosities/1 ```, voici les résultats que vous pourriez obtenir :
+Si vous lancez un serveur Rails et que vous essayez d'aller sur ``` https://curiosites-[votrenom].c9users.io/curiosities/1 ```, voici les résultats que vous pourriez obtenir :
 
 ![Erreur curiosité inconnue](/images/readme/error_view_record_not_found.png)
 
@@ -223,8 +219,4 @@ Testez maintenant votre nouvelle action sur votre application en détruisant l'u
 - La documentation de Ruby : http://ruby-doc.org/core-2.3.1/
 - La documentation de Ruby On Rails : http://api.rubyonrails.org/
 - Active Record : https://fr.wikipedia.org/wiki/Active_record (concept en français) ou http://guides.rubyonrails.org/active_record_basics.html (introduction de Rails, en anglais)
-
-
-! EN CONSTRUCTION !
-
-(Changer les urls pour celle de CLOUD 9 !!!)
+- Les routes dans Ruby On Rails : http://guides.rubyonrails.org/routing.html
