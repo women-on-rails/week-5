@@ -2,6 +2,6 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'home/index'
 
-  get '/curiosities/:id', to: 'curiosities#show', as: 'curiosities'
-
+  delete '/curiosities/:id', to: 'curiosities#destroy', as: 'curiosities'
+  get '/curiosities/:id', to: 'curiosities#show'
 end

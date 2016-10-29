@@ -143,16 +143,88 @@ C'est normal, la vue liée à l'action ``` show ``` n'existe pas encore. L'appli
 
 ### Créer la vue
 
+Allez dans ```app/views``` et créez le dossier ```curiosities```. Ce dossier contiendra toutes les vues relatives au controleur ``` CuriositiesController ``` créé précedemment.
 
+Puis, créez un fichier nommé ``` show.html.erb ``` dans le dossier ``` Curiosities ```, qui contiendra tout ce que vous voulez afficher concernant une curiosité.
+
+Pour afficher les informations d'une curiosité, il faut manipuler la curiosité contenue dans la variable ``` @curiosity ``` (que nous avons définie précédemment) passée à la vue par le controleur.
+
+![Code pour la vue / méthode SHOW](/images/readme/view_show_code.png)
+
+ce code donnera un affiche comme suit:
+
+![Vue / méthode SHOW](/images/readme/view_display_show.png)
 
 # Étape 3 : Pour aller plus loin
 
-! EN CONSTRUCTION !
+## Détruire une instance en passant par le navigateur
+
+### Créer la route
+
+Pour commencer, nous allons créer une nouvelle route dans le fichier ````config/routes.rb```` pour signifier à la fois quelle action HTTP nous voulons accomplir (ici ````delete````), le controleur de l'objet associé (ici ````curiosities````) et la méthode qui définira l'action à faire quand l'utilisateur cliquera sur le lien (ici ````destroy````).
+
+Rajoutez la ligne suivante dans le fichier ````config/routes.rb```` :
+
+![Routes / DELETE](/images/readme/routes_delete.png)
+
+### Ajouter la méthode correspondante dans le controleur
+
+Maintenant, il s'agit de définir ce qu'il se passe quand l'utilisateur va cliquer sur le lien pour détruire une instance. Dans la méthode ````destroy````, nous allons récupérer l'instance que nous voulons supprimer, grâce aux paramètres de l'url ````/curiosities/25````. Ensuite, nous allons la supprimer dans la base de données grâce à la méthode ````.delete```` et ensuite rediriger l'utilisateur sur la vue de toutes les curiosités.
+
+Rajoutez la méthode ````destroy```` et ce qu'elle fait dans le controleur ````Curiosities```` qui se trouve dans ````app/controllers/curiosities.rb```` :
+
+![Controleur / méthode Destroy](/images/readme/controller_destroy_method.png)
+
+> Rappel :
+> Les valeurs contenues dans la variable ``` params ``` viennent du navigateur de l'utilisateur.
+> Il les envoie au serveur lorsqu'une requete est effectuée. Par exemple, si un utilisateur demande:
+> http://localhost:3000/curiosities?toto=poulpe
+
+> Alors params[:toto] sera égal à poulpe.
+
+> La variable ````params```` est simplement un tableau de valeurs accessibles grace à des clés.
+> Ici la valeur à laquelle accéder est ````poulpe```` et la clé d'accès est ````:toto````.
+
+### Ajouter le lien pour supprimer les curiosités dans la vue
+
+Il faut maintenant afficher à l'utilisateur qu'il peut supprimer une curiosité. Pour cela, dans la vue, nous allons créer un lien dans la boucle de toutes les curiosités contenant le chemin pour détruire une instance en particulier.
+
+> Rappel :
+> Un lien dynamique se construit de cette façon en Ruby On Rails :
+
+> ```Ruby <%= link_to 'Nom du lien qui sera affiché dans la vue', chemin_vers_le_controleur %>````
+
+Trouvons le chemin (``` path ```) qui indiquera la route dans le fichier ``` config/routes.rb ``` vers la méthode du controleur.
+
+> Rappel : vous pouvez entrer ``` rake routes ``` dans votre terminal pour trouver tous les chemins déjà définis.
+
+![Rake routes](/images/readme/rake_routes_delete.png)
+
+Vous retrouvez bien le verbe HTTP ``` DELETE ``` (cf Verb), l'url ``` /curiosity/:id ``` (cf URI Pattern), la méthode du Controleur ``` curiosities#destroy ``` (cf Controller#Action). Et tout devant, un prefix ``` curiosity ``` qui vous donne en fait le chemin à rajouter dans votre vue : ``` curiosity_path ```. Attention, ici, le controleur a besoin de l'identifiant de la curiosité à supprimer. Il faut donc la passer dans les paramètres. Nous l'indiquons comme ceci : ``` curiosity_path(curiosity) ```.
+
+> Rappel : ``` curiosities_path(curiosity) ``` est une méthode générée par Ruby On Rails directement, en fonction de ce que vous avez défini dans le fichier ``` route.rb ```.
+> Elle accepte un objet ``` curiosity ``` ou son identifiant ``` curiosity.id ```.
+
+Rajoutez le lien dans votre vue ``` app/views/home/index.html.erb ``` :
+
+![Lien pour détruire une curiosité ](/images/readme/view_index_code_delete.png)
+
+Dans le cadre d'une suppression, nous rajoutons un élément important au ``` link_to ``` : la précision du verbe HTTP avec ``` method: :delete ```.
+
+Testez maintenant votre nouvelle action sur votre application en détruisant l'une de vos curiosités.
+
+![Lien visible sur l'application, pour détruire une curiosité](/images/readme/view_index_button_delete.png)
 
 # Étape 4 : Enregistrer les modifications sur le répertoire distant
 
 [Enregistrer vos modifications et les envoyer sur votre répertoire Github](https://women-on-rails.github.io/guide/push_project)
 
 # Liens Utiles :
+- La documentation de Ruby : http://ruby-doc.org/core-2.3.1/
+- La documentation de Ruby On Rails : http://api.rubyonrails.org/
+- Active Record : https://fr.wikipedia.org/wiki/Active_record (concept en français) ou http://guides.rubyonrails.org/active_record_basics.html (introduction de Rails, en anglais)
+
 
 ! EN CONSTRUCTION !
+
+(Changer les urls pour celle de CLOUD 9 !!!)

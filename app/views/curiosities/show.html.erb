@@ -1,0 +1,14 @@
+<h1> Curiosité #<%= @curiosity.id %></h1>
+
+<div class="container">
+  <div class="col-sm-3">
+    <div class="item">
+      <a href="<%= @curiosity.image_url %>" target="_blank">
+        <img class="picture" title="<%= @curiosity.image_text %>" alt="<%= @curiosity.image_text %>" src="<%= @curiosity.image_url %>">
+        </img>
+      </a>
+    </div>
+    <h3><%= @curiosity.name %></h3>
+    <p><%= @curiosity.description %></p>
+  </div> <!-- end .col-sm-3 -->
+</div> <!-- end .container -->
