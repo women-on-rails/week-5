@@ -18,7 +18,22 @@ Le rappel sur le patron de conception [Modèle - Vue - Controleur] peut etre tro
 
 ## Actions HTTP
 
-! EN CONSTRUCTION !
+Ruby On Rails permet d'utiliser au mieux le [protocole HTTP](https://openclassrooms.com/courses/les-requetes-http), sur lequel repose la navigation Web. Il y a 4 types de requêtes principales en HTTP :
+- GET (afficher une page),
+- POST (créer une nouvelle ressource),
+- PUT (pour modifier entièrement la ressource, ou PATCH pour la modifier partiellement),
+- DELETE (supprimer une ressource).
+
+Suite à chaque requête, le serveur envoie une réponse.
+
+De plus, il y a 7 actions de base dans chaque contrôleur Rails:
+- SHOW : affiche une ressource en particulier (action GET)
+- INDEX : affiche la liste de toutess les ressources d'un meme type (action GET)
+- NEW : affiche le formulaire pour créer une nouvelle ressource (action GET)
+- CREATE : une fois le précédent formulaire complété, crée la ressource (action POST)
+- EDIT : affiche le formulaire d’édition d'une ressource (action GET)
+- UPDATE : met a jour une ressource spécifiée (action PUT)
+- DESTROY : supprime une ressource spécifique (action DELETE)
 
 # Étape 2 : Lire l'exercice et se lancer
 
