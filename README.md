@@ -195,7 +195,7 @@ Trouvons le chemin (``` path ```) qui indiquera la route dans le fichier ``` con
 
 ![Rake routes](/images/readme/rake_routes_delete.png)
 
-Vous retrouvez bien le verbe HTTP ``` DELETE ``` (cf Verb), l'url ``` /curiosity/:id ``` (cf URI Pattern), la méthode du Contrôleur ``` curiosities#destroy ``` (cf Controller#Action). Et tout devant, un préfixe ``` curiosity ``` qui vous donne en fait le chemin à rajouter dans votre vue : ``` curiosity_path ```. Attention, ici, le contrôleur a besoin de l'identifiant de la curiosité à supprimer. Il faut donc la passer dans les paramètres. Nous l'indiquons comme ceci : ``` curiosity_path(curiosity) ```.
+Vous retrouvez bien le verbe HTTP ``` DELETE ``` (cf Verb), l'url ``` /curiosity/:id ``` (cf URI Pattern), la méthode du Contrôleur ``` curiosities#destroy ``` (cf Controller#Action). Et tout devant, un préfixe ``` curiosities ``` qui vous donne en fait le chemin à rajouter dans votre vue : ``` curiosities_path ```. Attention, ici, le contrôleur a besoin de l'identifiant de la curiosité à supprimer. Il faut donc la passer dans les paramètres. Nous l'indiquons comme ceci : ``` curiosities_path(curiosity) ```.
 
 > Rappel : ``` curiosities_path(curiosity) ``` est une méthode générée par Ruby On Rails directement, en fonction de ce que vous avez défini dans le fichier ``` route.rb ```.
 > Elle accepte un objet ``` curiosity ``` ou son identifiant ``` curiosity.id ```.
