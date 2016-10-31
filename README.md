@@ -100,21 +100,7 @@ Ici, l'application n'arrive pas à trouver la curiosité demandée. La curiosit�
 
 ![Erreur vue manquante](/images/readme/error_view_missing_template.png)
 
-Cette fois l'application sait comment réagir avec cette URL. Le souci maintenant, c'est que la vue liée à l'action ``` show ``` n'existe pas encore. Construisons-la !
-
-### Créer la vue affichant les détails d'une curiosité
-
-Allez dans ```app/views``` et créez le dossier ```curiosities```. Ce dossier contiendra toutes les vues relatives au contrôleur ``` CuriositiesController ``` créé précédemment.
-
-Puis, créez un fichier nommé ``` show.html.erb ``` dans le dossier ``` Curiosities ```, qui contiendra tout ce que vous voulez afficher concernant une curiosité.
-
-Pour afficher les informations d'une curiosité, il faut manipuler la curiosité contenue dans la variable ``` @curiosity ``` (que nous avons définie précédemment) passée à la vue par le contrôleur.
-
-![Code pour la vue / méthode SHOW](/images/readme/view_show_code.png)
-
-ce code donnera un affichage comme suit:
-
-![Vue / méthode SHOW](/images/readme/view_display_show.png)
+Cette fois l'application sait comment réagir avec cette URL. Le souci maintenant, c'est que la vue liée à l'action ``` show ``` n'existe pas encore. Nous allons donc la créer, mais avant ça, voyons comment y accéder depuis l'index !
 
 ### Ajouter le lien pour accéder à une curiosité dans l'index
 
@@ -146,7 +132,23 @@ Testez maintenant votre nouveau lien en lançant un serveur Rails. Il s'affiche 
 
 ![Liste des curiosités](/images/readme/view_display_link.png)
 
-Et si vous cliquez dessus, vous obtenez bien la vue affichant les détails de la curiosité en question !
+Par contre, si vous cliquez dessus, vous obtenez toujours l'erreur sur la vue manquante : 
+
+![Erreur vue manquante](/images/readme/error_view_missing_template.png)
+
+C'est normal, la vue liée à l'action ```show``` n'existe pas encore. L'application sait où aller, quoi passer à une vue mais ne connaît pas encore cette vue. Construisons-là !
+
+### Créer la vue affichant les détails d'une curiosité
+
+Allez dans ```app/views``` et créez le dossier ```curiosities```. Ce dossier contiendra toutes les vues relatives au contrôleur ``` CuriositiesController ``` créé précédemment.
+
+Puis, créez un fichier nommé ``` show.html.erb ``` dans le dossier ``` Curiosities ```, qui contiendra tout ce que vous voulez afficher concernant une curiosité.
+
+Pour afficher les informations d'une curiosité, il faut manipuler la curiosité contenue dans la variable ``` @curiosity ``` (que nous avons définie précédemment) passée à la vue par le contrôleur.
+
+![Code pour la vue / méthode SHOW](/images/readme/view_show_code.png)
+
+ce code donnera un affichage comme suit:
 
 ![Vue / méthode SHOW](/images/readme/view_display_show.png)
 
