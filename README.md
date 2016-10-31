@@ -12,7 +12,7 @@ Vous pouvez retrouver les commandes utiles pour le terminal, git et la console R
 
 ## MVC
 
-Le rappel sur le patron de conception [Modèle - Vue - Controleur] peut etre trouvé [ici](openclassrooms.com/courses/apprendre-asp-net-mvc/le-pattern-mvc)
+Le rappel sur le patron de conception [Modèle - Vue - Controleur] peut etre trouvé [ici](https://openclassrooms.com/courses/apprendre-asp-net-mvc/le-pattern-mvc)
 
 ## Actions HTTP
 
@@ -24,13 +24,13 @@ Ruby On Rails permet d'utiliser au mieux le [protocole HTTP](https://openclassro
 
 Suite à chaque requête, le serveur envoie une réponse.
 
-De plus, il y a 7 actions de base dans chaque contrôleur Rails:
+De plus, chaque contrôleur Rails possède 7 actions de base, chaque action correspondant à un type de requête HTTP :
 - SHOW : affiche une ressource en particulier (action GET)
-- INDEX : affiche la liste de toutess les ressources d'un meme type (action GET)
+- INDEX : affiche la liste de toutes les ressources d'un même type (action GET)
 - NEW : affiche le formulaire pour créer une nouvelle ressource (action GET)
 - CREATE : une fois le précédent formulaire complété, crée la ressource (action POST)
 - EDIT : affiche le formulaire d’édition d'une ressource (action GET)
-- UPDATE : met a jour une ressource spécifiée (action PUT)
+- UPDATE : met à jour une ressource spécifiée (action PUT)
 - DESTROY : supprime une ressource spécifique (action DELETE)
 
 # Étape 2 : Lire l'exercice et se lancer
@@ -39,18 +39,18 @@ De plus, il y a 7 actions de base dans chaque contrôleur Rails:
 
 Ouvrez votre projet avec Cloud9, ou l'éditeur que vous utilisez si vous avez une installation native.
 
-Si vous utilisez SublimeText, vous pouvez faire subl . dans la console pour ouvrir directement votre projet. (subl c'est SublimeText, l'espace c'est parce que la commande est finie, et le point c'est pour dire "ouvre dans Sublime Text tout le dossier dans lequel je suis, en un coup").
+Si vous utilisez SublimeText, vous pouvez faire ```subl .``` dans la console pour ouvrir directement votre projet. (subl c'est SublimeText, l'espace c'est parce que la commande est finie, et le point c'est pour dire "ouvre dans Sublime Text tout le dossier dans lequel je suis, en un coup").
 
 ## Faire une page principale pour chaque curiosité
 
-### Créer le controleur
+### Créer le contrôleur
 
 Pour commencer, créez le fichier ``` app/controllers/curiosities_controller.rb ```.
 Ce fichier est pour le moment vide.
 
 ![Controleur vide](/images/readme/empty_controller.png)
 
-Nous allons définir à l'intérieur de ce fichier la classe ``` CuriositiesController ``` qui va nous permettre d'orchestrer les accès aux vues des curiosités.
+Nous allons définir à l'intérieur de ce fichier la classe ``` CuriositiesController ``` qui va nous permettre d'orchestrer les accès aux vues (les pages html) des curiosités.
 
 Pour cela, ajoutez le code suivant dans le fichier ``` app/controllers/curiosities_controller.rb ```:
 
@@ -58,7 +58,7 @@ Pour cela, ajoutez le code suivant dans le fichier ``` app/controllers/curiositi
 
 Dans votre classe ``` CuriositiesController ```, vous allez ajouter les méthodes qui vont définir les actions possibles à faire sur des curiosités, dans l'application.
 
-Ici, nous commençons donc par travailler sur l'action d'affichage d'une curiosité.
+Ici, nous commençons donc par travailler sur l'action d'affichage d'une curiosité en définissant une méthode ``` show ```:
 
 ![Définition de la méthode ``` show ```](/images/readme/description_show.png)
 
@@ -66,14 +66,14 @@ Nous avons besoin de définir ce qu'il se passe quand un utilisateur demande à 
 
 Dans la méthode ``` show ```, nous allons récupérer les données d'une curiosité, contenues dans la base de données, grâce aux paramètres de l'url ```/curiosities/3```. Puis nous allons les stocker dans une instance de ``` Curiosity ``` et passer cette instance à une vue pour les afficher.
 
-Rajoutez la méthode ``` show ``` et ce qu'elle fait dans le controleur ``` Curiosities ``` qui se trouve dans ``` app/controllers/curiosities_controller.rb ``` :
+Précisez ce que fait la méthode ``` show ``` dans le controleur ``` Curiosities ``` qui se trouve dans ``` app/controllers/curiosities_controller.rb ``` :
 
 ![Description action](/images/readme/instance.png)
 
 > Astuce : Les valeurs contenues dans la variable ``` params ``` viennent du navigateur de l'utilisateur. Il les envoie au serveur lorsqu'une requete est effectuée. Par exemple, si un utilisateur demande:
 > http://localhost:3000/curiosities?toto=poulpe
 > Alors ``` params[:toto] ``` sera égal à poulpe.
-> La variable ``` params ``` est simplement un tableau de valeurs accessibles grace à des clés. Ici la valeur à laquelle accéder est poulpe et la clé d'accès est ``` :toto ```.
+> La variable ``` params ``` est simplement un tableau de valeurs accessibles grâce à des clés. Ici la valeur à laquelle accéder est poulpe et la clé d'accès est ``` :toto ```.
 
 Si à cette étape vous lancez un serveur Rails et que vous essayez d'aller sur ``` https://curiosites-[votrenom].c9users.io/curiosities/1 ``` (remplacez [votrenom] par le nom de votre compte), voici le résultat que vous obtiendrez :
 
@@ -83,11 +83,12 @@ Nous n'avons pas encore défini de route relative à la méthode ``` show ``` qu
 
 ### Créer la route
 
-Nous allons créer une nouvelle route dans le fichier ``` config/routes.rb ``` pour signifier à la fois quelle action HTTP nous voulons accomplir (ici ``` GET ```), le controleur de l'objet associé (ici ``` curiosities ```) et la méthode qui définira l'action à faire quand l'utilisateur cliquera sur le lien (ici ``` show ```).
+Nous allons créer une nouvelle route dans le fichier ``` config/routes.rb ``` pour signifier à la fois l'action HTTP que nous voulons accomplir (ici ``` GET ```), le contrôleur de l'objet associé (ici ``` curiosities ```) et la méthode qui définira l'action à faire quand l'utilisateur cliquera sur le lien (ici ``` show ```).
 
-Ce travail permet d'associer une URL (sur laquelle veut se rendre un utilisateur) à une action de controleur.
+Ce travail permet d'associer une URL (sur laquelle veut se rendre un utilisateur) à une action de contrôleur. Pour ce faire, on utilise la syntaxe suivante dans le fichier ``` config/routes.rb ``` : 
+``` verbe_http 'URL', to: 'nom_du_controleur#nom_de_la_méthode' ```
 
-Rajoutez la ligne suivante dans le fichier ``` config/routes.rb ``` :
+Dans notre cas, nous allons ajouter la ligne suivante dans le fichier ``` config/routes.rb ``` :
 
 ![Définition route](/images/readme/routes.png)
 
@@ -99,29 +100,29 @@ Ici, l'application n'arrive pas à trouver la curiosité demandée. La curiosit�
 
 ![Erreur vue manquante](/images/readme/error_view_missing_template.png)
 
-Cette fois l'application sait comment réagir avec cette URL. Le souci maintenant, c'est que la vue associée n'existe pas encore.
+Cette fois l'application sait comment réagir avec cette URL. Le souci maintenant, c'est que la vue liée à l'action ``` show ``` n'existe pas encore. Nous allons donc la créer, mais avant ça, voyons comment y accéder depuis l'index !
 
-### Ajouter le lien pour accéder à une curiosité dans la vue
+### Ajouter le lien pour accéder à une curiosité dans l'index
 
-Il faut maintenant afficher à l'utilisateur qu'il peut afficher une curiosité spécifique. Pour cela, dans la vue, nous allons créer un lien dans la boucle de toutes les curiosités contenant le chemin pour afficher une instance en particulier.
+Il faut maintenant montrer à l'utilisateur qu'il peut afficher une curiosité spécifique. Pour cela, dans la vue d'index, nous allons créer un lien dans la boucle de toutes les curiosités contenant le chemin pour afficher une instance en particulier.
 
  Un lien dynamique se construit de cette façon en Ruby On Rails :
 
 ``` <%= link_to 'Nom du lien qui sera affiché dans la vue', chemin_vers_le_controleur %> ```
 
-Il faut trouver le chemin (``` path ```) qui indiquera la route dans le fichier ``` config/routes.rb ``` vers la méthode du controleur. Pour trouver ce chemin, vous pouvez entrer ``` rake routes ``` dans votre terminal.
+Il faut trouver le chemin (``` path ```) qui indiquera la route dans le fichier ``` config/routes.rb ``` vers la méthode du contrôleur. Pour trouver ce chemin, vous pouvez entrer ``` rake routes ``` dans votre terminal.
 
 Ce qui vous donne :
 
 ![Rake routes](/images/readme/rake_routes.png)
 
-La ligne qui nous interesse est la suivante : ```  GET  /curiosities/:id(.:format) curiosities#show ```
+La ligne qui nous intéresse est la suivante : ```  GET  /curiosities/:id(.:format) curiosities#show ```
 
-Vous retrouvez bien le verbe HTTP ``` GET ``` (cf Verb), l'url ``` /curiosities/:id ```  (cf URI Pattern), la méthode du Controleur ``` curiosities#show ``` (cf Controller#Action). Et tout devant, un prefix ``` curiosities ``` qui vous donne en fait le chemin à rajouter dans votre vue : ``` curiosities_path ```.
+Vous retrouvez bien le verbe HTTP ``` GET ``` (cf Verb), l'url ``` /curiosities/:id ```  (cf URI Pattern), la méthode du Contrôleur ``` curiosities#show ``` (cf Controller#Action). Et tout devant, un préfixe ``` curiosities ``` qui vous donne en fait le chemin à rajouter dans votre vue : ``` curiosities_path ```.
 
-Attention, ici, le controleur a besoin de l'identifiant (ID) de la curiosité à afficher. Il faut donc la passer dans les paramètres. Nous l'indiquons comme ceci : ``` curiosities_path(curiosity) ```.
+Attention, ici, le contrôleur a besoin de l'identifiant (ID) de la curiosité à afficher. Il faut donc la passer dans les paramètres. Nous l'indiquons comme ceci : ``` curiosities_path(curiosity) ```.
 
-> Important : ``` curiosities_path(curiosity) est une méthode générée par Ruby On Rails directement, en fonction de ce que vous avez défini dans le fichier ``` route.rb ``` . Elle accepte en parametre un objet ``` curiosity ``` ou son identifiant ``` curiosity.id ```.
+> Important : ``` curiosities_path(curiosity) est une méthode générée par Ruby On Rails directement, en fonction de ce que vous avez défini dans le fichier ``` route.rb ``` . Elle accepte en paramètre un objet ``` curiosity ``` ou son identifiant ``` curiosity.id ```.
 
 Rajoutez le lien dans votre vue ``` app/views/home/index.html ``` :
 
@@ -131,23 +132,23 @@ Testez maintenant votre nouveau lien en lançant un serveur Rails. Il s'affiche 
 
 ![Liste des curiosités](/images/readme/view_display_link.png)
 
-Par contre, si vous cliquez dessus, vous obtenez toujours l'erreur sur la vue manquante.
+Par contre, si vous cliquez dessus, vous obtenez toujours l'erreur sur la vue manquante : 
 
 ![Erreur vue manquante](/images/readme/error_view_missing_template.png)
 
-C'est normal, la vue liée à l'action ``` show ``` n'existe pas encore. L'application sait où aller, quoi passer à une vue mais ne connait pas encore cette vue. Construisons la !
+C'est normal, la vue liée à l'action ```show``` n'existe pas encore. L'application sait où aller, quoi passer à une vue mais ne connaît pas encore cette vue. Construisons-là !
 
-### Créer la vue
+### Créer la vue affichant les détails d'une curiosité
 
-Allez dans ```app/views``` et créez le dossier ```curiosities```. Ce dossier contiendra toutes les vues relatives au controleur ``` CuriositiesController ``` créé précedemment.
+Allez dans ```app/views``` et créez le dossier ```curiosities```. Ce dossier contiendra toutes les vues relatives au contrôleur ``` CuriositiesController ``` créé précédemment.
 
 Puis, créez un fichier nommé ``` show.html.erb ``` dans le dossier ``` Curiosities ```, qui contiendra tout ce que vous voulez afficher concernant une curiosité.
 
-Pour afficher les informations d'une curiosité, il faut manipuler la curiosité contenue dans la variable ``` @curiosity ``` (que nous avons définie précédemment) passée à la vue par le controleur.
+Pour afficher les informations d'une curiosité, il faut manipuler la curiosité contenue dans la variable ``` @curiosity ``` (que nous avons définie précédemment) passée à la vue par le contrôleur.
 
 ![Code pour la vue / méthode SHOW](/images/readme/view_show_code.png)
 
-ce code donnera un affiche comme suit:
+ce code donnera un affichage comme suit:
 
 ![Vue / méthode SHOW](/images/readme/view_display_show.png)
 
@@ -157,23 +158,23 @@ ce code donnera un affiche comme suit:
 
 ### Créer la route
 
-Pour commencer, nous allons créer une nouvelle route dans le fichier ````config/routes.rb```` pour signifier à la fois quelle action HTTP nous voulons accomplir (ici ````delete````), le controleur de l'objet associé (ici ````curiosities````) et la méthode qui définira l'action à faire quand l'utilisateur cliquera sur le lien (ici ````destroy````).
+Pour commencer, nous allons créer une nouvelle route dans le fichier ````config/routes.rb```` pour signifier à la fois quelle action HTTP nous voulons accomplir (ici ````delete````), le contrôleur de l'objet associé (ici ````curiosities````) et la méthode qui définira l'action à faire quand l'utilisateur cliquera sur le lien (ici ````destroy````).
 
 Rajoutez la ligne suivante dans le fichier ````config/routes.rb```` :
 
 ![Routes / DELETE](/images/readme/routes_delete.png)
 
-### Ajouter la méthode correspondante dans le controleur
+### Ajouter la méthode correspondante dans le contrôleur
 
 Maintenant, il s'agit de définir ce qu'il se passe quand l'utilisateur va cliquer sur le lien pour détruire une instance. Dans la méthode ````destroy````, nous allons récupérer l'instance que nous voulons supprimer, grâce aux paramètres de l'url ````/curiosities/25````. Ensuite, nous allons la supprimer dans la base de données grâce à la méthode ````.delete```` et ensuite rediriger l'utilisateur sur la vue de toutes les curiosités.
 
-Rajoutez la méthode ````destroy```` et ce qu'elle fait dans le controleur ````Curiosities```` qui se trouve dans ````app/controllers/curiosities.rb```` :
+Rajoutez la méthode ````destroy```` et ce qu'elle fait dans le contrôleur ````Curiosities```` qui se trouve dans ````app/controllers/curiosities.rb```` :
 
 ![Controleur / méthode Destroy](/images/readme/controller_destroy_method.png)
 
 > Rappel :
 > Les valeurs contenues dans la variable ``` params ``` viennent du navigateur de l'utilisateur.
-> Il les envoie au serveur lorsqu'une requete est effectuée. Par exemple, si un utilisateur demande:
+> Il les envoie au serveur lorsqu'une requête est effectuée. Par exemple, si un utilisateur demande:
 > http://localhost:3000/curiosities?toto=poulpe
 
 > Alors params[:toto] sera égal à poulpe.
@@ -196,7 +197,7 @@ Trouvons le chemin (``` path ```) qui indiquera la route dans le fichier ``` con
 
 ![Rake routes](/images/readme/rake_routes_delete.png)
 
-Vous retrouvez bien le verbe HTTP ``` DELETE ``` (cf Verb), l'url ``` /curiosity/:id ``` (cf URI Pattern), la méthode du Controleur ``` curiosities#destroy ``` (cf Controller#Action). Et tout devant, un prefix ``` curiosity ``` qui vous donne en fait le chemin à rajouter dans votre vue : ``` curiosity_path ```. Attention, ici, le controleur a besoin de l'identifiant de la curiosité à supprimer. Il faut donc la passer dans les paramètres. Nous l'indiquons comme ceci : ``` curiosity_path(curiosity) ```.
+Vous retrouvez bien le verbe HTTP ``` DELETE ``` (cf Verb), l'url ``` /curiosity/:id ``` (cf URI Pattern), la méthode du Contrôleur ``` curiosities#destroy ``` (cf Controller#Action). Et tout devant, un préfixe ``` curiosities ``` qui vous donne en fait le chemin à rajouter dans votre vue : ``` curiosities_path ```. Attention, ici, le contrôleur a besoin de l'identifiant de la curiosité à supprimer. Il faut donc la passer dans les paramètres. Nous l'indiquons comme ceci : ``` curiosities_path(curiosity) ```.
 
 > Rappel : ``` curiosities_path(curiosity) ``` est une méthode générée par Ruby On Rails directement, en fonction de ce que vous avez défini dans le fichier ``` route.rb ```.
 > Elle accepte un objet ``` curiosity ``` ou son identifiant ``` curiosity.id ```.
