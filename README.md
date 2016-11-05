@@ -116,13 +116,13 @@ Ce qui vous donne :
 
 ![Rake routes](/images/readme/rake_routes.png)
 
-La ligne qui nous intéresse est la suivante : ```  GET  /curiosities/:id(.:format) curiosities#show ```
+La ligne qui nous intéresse est la suivante : ``` curiosity GET  /curiosities/:id(.:format) curiosities#show ```
 
-Vous retrouvez bien le verbe HTTP ``` GET ``` (cf Verb), l'url ``` /curiosities/:id ```  (cf URI Pattern), la méthode du Contrôleur ``` curiosities#show ``` (cf Controller#Action). Et tout devant, un préfixe ``` curiosities ``` qui vous donne en fait le chemin à rajouter dans votre vue : ``` curiosities_path ```.
+Vous retrouvez bien le verbe HTTP ``` GET ``` (cf Verb), l'url ``` /curiosities/:id ```  (cf URI Pattern), la méthode du Contrôleur ``` curiosities#show ``` (cf Controller#Action). Et tout devant, un préfixe ``` curiosity ``` qui vous donne en fait le chemin à rajouter dans votre vue : ``` curiosity_path ```.
 
-Attention, ici, le contrôleur a besoin de l'identifiant (ID) de la curiosité à afficher. Il faut donc la passer dans les paramètres. Nous l'indiquons comme ceci : ``` curiosities_path(curiosity) ```.
+Attention, ici, le contrôleur a besoin de l'identifiant (ID) de la curiosité à afficher. Il faut donc la passer dans les paramètres. Nous l'indiquons comme ceci : ``` curiosity_path(curiosity) ```.
 
-> Important : ``` curiosities_path(curiosity) est une méthode générée par Ruby On Rails directement, en fonction de ce que vous avez défini dans le fichier ``` route.rb ``` . Elle accepte en paramètre un objet ``` curiosity ``` ou son identifiant ``` curiosity.id ```.
+> Important : ``` curiosity_path(curiosity) est une méthode générée par Ruby On Rails directement, en fonction de ce que vous avez défini dans le fichier ``` route.rb ``` . Elle accepte en paramètre un objet ``` curiosity ``` ou son identifiant ``` curiosity.id ```.
 
 Rajoutez le lien dans votre vue ``` app/views/home/index.html ``` :
 
