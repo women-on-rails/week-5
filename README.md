@@ -211,6 +211,17 @@ Testez maintenant votre nouvelle action sur votre application en détruisant l'u
 
 ![Lien visible sur l'application, pour détruire une curiosité](/images/readme/view_index_button_delete.png)
 
+### Ajout d'une pop-up de confirmation
+
+Nous aimerions ajouter une pop-up de confirmation de destruction avec ````data: { confirm: 'Message de confirmation' }```` dans le ````link_to```` de la vue, car c'est une action sur laquelle l'utilisateur ne pourra pas revenir. Nous voulons donc être sûrs de son choix.
+
+Aidez-vous de la documentation du [link_to](http://api.rubyonrails.org/classes/ActionView/Helpers/UrlHelper.html#method-i-link_to) et ajoutez cette pop-up !
+
+### Ajout d'une image
+
+Pour rendre notre page plus sympa, nous aimerions avoir une image à la place du texte `Supprimer`. Amusez-vous à remplacer ce texte par une icône en utilisant les icônes bootstrap, dont vous pouvez trouver la documentation [ici](http://getbootstrap.com/components/) !
+
+
 # Étape 4 : Enregistrer les modifications sur le répertoire distant
 
 [Enregistrer vos modifications et les envoyer sur votre répertoire Github](https://women-on-rails.github.io/guide/push_project)
