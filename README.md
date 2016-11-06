@@ -2,7 +2,7 @@
 
 Slides du cours disponibles [ici](http://slides.com/women_on_rails/week-5)
 
-Ce tutoriel a pour objectif de comprendre comment manipuler des objets dans le controleur et passer les données de ces objets à des vues, dans le cadre du cycle 1 des ateliers Women On Rails.
+Ce tutoriel a pour objectif de comprendre comment manipuler des objets dans le controleur et passer les données de ces objets à des vues (vue d'une curiosité et destruction), dans le cadre du cycle 1 des ateliers Women On Rails.
 
 # Étape 1 : Rappels
 
@@ -12,7 +12,7 @@ Vous pouvez retrouver les commandes utiles pour le terminal, git et la console R
 
 ## MVC
 
-Le rappel sur le patron de conception [Modèle - Vue - Controleur] peut etre trouvé [ici](https://openclassrooms.com/courses/apprendre-asp-net-mvc/le-pattern-mvc)
+Le rappel sur le patron de conception [Modèle - Vue - Contrôleur] peut etre trouvé [ici](https://openclassrooms.com/courses/apprendre-asp-net-mvc/le-pattern-mvc)
 
 ## Actions HTTP
 
@@ -48,13 +48,13 @@ Si vous utilisez SublimeText, vous pouvez faire ```subl .``` dans la console pou
 Pour commencer, créez le fichier ``` app/controllers/curiosities_controller.rb ```.
 Ce fichier est pour le moment vide.
 
-![Controleur vide](/images/readme/empty_controller.png)
+![Contrôleur vide](/images/readme/empty_controller.png)
 
 Nous allons définir à l'intérieur de ce fichier la classe ``` CuriositiesController ``` qui va nous permettre d'orchestrer les accès aux vues (les pages html) des curiosités.
 
 Pour cela, ajoutez le code suivant dans le fichier ``` app/controllers/curiosities_controller.rb ```:
 
-![Controleur défini](/images/readme/defined_class.png)
+![Contrôleur défini](/images/readme/defined_class.png)
 
 Dans votre classe ``` CuriositiesController ```, vous allez ajouter les méthodes qui vont définir les actions possibles à faire sur des curiosités, dans l'application.
 
@@ -170,7 +170,7 @@ Maintenant, il s'agit de définir ce qu'il se passe quand l'utilisateur va cliqu
 
 Rajoutez la méthode ````destroy```` et ce qu'elle fait dans le contrôleur ````Curiosities```` qui se trouve dans ````app/controllers/curiosities.rb```` :
 
-![Controleur / méthode Destroy](/images/readme/controller_destroy_method.png)
+![Contrôleur / méthode Destroy](/images/readme/controller_destroy_method.png)
 
 > Rappel :
 > Les valeurs contenues dans la variable ``` params ``` viennent du navigateur de l'utilisateur.
