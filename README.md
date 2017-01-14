@@ -233,3 +233,6 @@ Pour rendre notre page plus sympa, nous aimerions avoir une image à la place du
 - La documentation de Ruby On Rails : http://api.rubyonrails.org/
 - Active Record : https://fr.wikipedia.org/wiki/Active_record (concept en français) ou http://guides.rubyonrails.org/active_record_basics.html (introduction de Rails, en anglais)
 - Les routes dans Ruby On Rails : http://guides.rubyonrails.org/routing.html
+
+# Et ensuite ?
+Venez comprendre comment manipuler des objets dans le contrôleur et passer les données de ces objets à des vues (création et édition) grace au tutoriel [Week-6](https://github.com/women-on-rails/week-6)
